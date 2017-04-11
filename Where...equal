@@ -1,0 +1,2 @@
+SELECT * FROM family_members WHERE species = 'dog';
+SELECT * FROM family_members WHERE species = 'human';
