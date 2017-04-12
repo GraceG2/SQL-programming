@@ -1,0 +1,2 @@
+SELECT * FROM movies ORDER BY imdb_rating ASC LIMIT 3;
+SELECT * FROM movies ORDER BY imdb_rating DESC LIMIT 3;
