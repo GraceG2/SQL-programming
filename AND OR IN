@@ -1,0 +1,4 @@
+SELECT * FROM friends_of_pickles WHERE height_cm < 45 AND species = 'dog';
+SELECT * FROM friends_of_pickles WHERE height_cm < 45 OR species = 'dog';
+SELECT * FROM friends_of_pickles WHERE species IN ('human', 'cat');
+SELECT * FROM friends_of_pickles WHERE species NOT IN ('dog', 'cat');
