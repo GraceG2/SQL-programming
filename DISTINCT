@@ -1,0 +1,2 @@
+SELECT DISTINCT gender, species FROM friends_of_pickles WHERE height_cm < 100;
+SELECT DISTINCT species FROM friends_of_pickles WHERE height_cm > 50;
