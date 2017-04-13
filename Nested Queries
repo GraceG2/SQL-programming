@@ -1,0 +1,2 @@
+SELECT * FROM family_members WHERE num_books_read = (SELECT MAX(num_books_read) FROM family_members);
+SELECT * FROM family_members WHERE num_legs = (SELECT MIN(num_legs) FROM family_members);
