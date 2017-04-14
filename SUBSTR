@@ -1,0 +1,3 @@
+/*SUBSTR(column_name, index, number_of_characters) */
+SELECT * FROM robots WHERE SUBSTR(name, -4) LIKE '20__';
+SELECT * FROM robots WHERE SUBSTR(location, -2) = 'NY';
