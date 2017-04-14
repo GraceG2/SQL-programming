@@ -1,0 +1,14 @@
+SELECT character.name AS character, tv_show.name AS name
+FROM character 
+LEFT JOIN character_tv_show
+ON character.id = character_tv_show.character_id
+LEFT JOIN tv_show
+ON character_tv_show.tv_show_id = tv_show.id;
+
+SELECT character.name 
+AS character, actor.name AS actor 
+FROM character 
+LEFT JOIN character_actor 
+ON character.id = character_actor.character_id
+LEFT JOIN actor 
+ON character_actor.actor_id = actor.id;
