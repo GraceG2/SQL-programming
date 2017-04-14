@@ -1,0 +1,15 @@
+/*LIKE:“_”represents 1 character,“%”represents any number of characters*/
+SELECT * FROM robots WHERE name LIKE "%Robot 20__";
+
+/* CASE WHEN *first thing is true* THEN *value1*
+WHEN *second thing is true* THEN *value2*
+...
+ELSE *value for all other situations* 
+END */
+
+SELECT *,
+CASE WHEN species = 'human' THEN 'talk' 
+WHEN species = 'dog' THEN 'bark' 
+ELSE 'meow' 
+END 
+AS sound FROM friends_of_pickles;
