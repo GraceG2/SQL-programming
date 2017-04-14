@@ -1,0 +1,9 @@
+SELECT r1.name AS object, r2.name AS beats 
+FROM rps AS r1 
+INNER JOIN rps AS r2 
+ON r1.defeats_id = r2.id;
+
+SELECT e1.name AS employee_name, e2.name AS boss_name 
+FROM employees AS e1
+INNER JOIN employees AS e2
+ON e1.boss_id = e2.id;
