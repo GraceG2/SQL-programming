@@ -1,0 +1,62 @@
+7.
+SELECT SUM(trnsact.amt- skstinfo.cost*trnsact.quantity)/COUNT(DISTINCT saledate) AS profit
+FROM trnsact LEFT JOIN  skstinfo
+ ON trnsact.sku = skstinfo.sku AND trnsact.store = skstinfo.store
+WHERE trnsact.stype = 'P'
+
+9.
+SELECT deptinfo.dept, deptinfo.deptdesc, skuinfo.color, skuinfo.brand, skuinfo.style, SUM(trnsact.amt) AS tot
+FROM trnsact LEFT JOIN skuinfo 
+  ON trnsact.sku = skuinfo.sku
+LEFT JOIN deptinfo
+  ON deptinfo.dept = deptinfo.dept
+GROUP BY deptinfo.dept, deptinfo.deptdesc, skuinfo.color, skuinfo.brand, skuinfo.style
+HAVING tot = 6438658.07
+ORDER BY deptinfo.dept DESC
+
+10.
+SELECT COUNT(o.store)
+FROM 
+(SELECT COUNT(sku) AS skus, store
+FROM skstinfo
+GROUP BY store)o
+WHERE o.skus > 180000
+
+11.
+SELECT style, size, vendor, packsize
+FROM
+(SELECT DISTINCT skuinfo.sku
+FROM skuinfo LEFT JOIN deptinfo
+  ON skuinfo.dept = deptinfo.dept
+WHERE deptinfo.deptdesc = 'cop' AND skuinfo.brand = 'federal' AND skuinfo.color = 'rinse wash')o 
+LEFT JOIN skuinfo
+  ON skuinfo.sku = o.sku
+
+12.
+SELECT COUNT(DISTINCT skuinfo.sku)
+FROM skuinfo LEFT JOIN skstinfo
+  ON skuinfo.sku = skstinfo.sku
+WHERE skstinfo.sku IS NULL AND skuinfo.sku IS NOT NULL
+
+13.
+SELECT SUM(trnsact.amt), strinfo.city, strinfo.state
+FROM trnsact LEFT JOIN strinfo
+  ON trnsact.store = strinfo.store
+GROUP BY strinfo.store, strinfo.state, strinfo.city
+WHERE trnsact.stype = 'P'
+ORDER BY SUM(trnsact.amt) DESC
+
+15.
+SELECT COUNT(o.state)
+FROM
+(SELECT COUNT(DISTINCT store) AS num_str, state
+FROM strinfo
+GROUP BY state
+HAVING COUNT(store) > 10)o
+
+16.
+SELECT skstinfo.retail, skuinfo.sku
+FROM (skuinfo LEFT JOIN skstinfo
+  ON skuinfo.sku = skstinfo.sku) LEFT JOIN deptinfo
+  ON skuinfo.dept = deptinfo.dept
+WHERE deptinfo.deptdesc = 'reebok' AND skuinfo.brand = 'skechers' AND skuinfo.color = 'wht/saphire'
